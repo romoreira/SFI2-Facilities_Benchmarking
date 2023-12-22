@@ -44,6 +44,8 @@ for ((i=1; i<=$num_execucoes; i++)); do
     # Imprime o tempo decorrido no formato CSV
     echo "$i, $elapsed_time" >> "$csv_file"
 
+    sleep 30
+
     # Exclui o StatefulSet
     kubectl delete sts cassandra
 
