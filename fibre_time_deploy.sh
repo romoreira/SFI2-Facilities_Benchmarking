@@ -3,7 +3,7 @@
 #!/bin/bash
 
 # Nome do arquivo CSV para armazenar os tempos
-csv_file="fabric_deployment.csv"
+csv_file="results/fibre_deployment.csv"
 
 # Cabeçalhos do arquivo CSV
 echo "#experiment, deployment_time" > "$csv_file"
@@ -18,8 +18,8 @@ for ((i=1; i<=$num_execucoes; i++)); do
     start_time=$(date +%s)
 
     # Aplica o arquivo YAML do StatefulSet
-    kubectl apply -f pv-cassandra.yaml
-    kubectl apply -f pvc-cassandra.yaml
+    #kubectl apply -f pv-cassandra.yaml
+    #kubectl apply -f pvc-cassandra.yaml
     kubectl apply -f sts-cassandra.yaml
 
     # Define o número total de nós no cluster

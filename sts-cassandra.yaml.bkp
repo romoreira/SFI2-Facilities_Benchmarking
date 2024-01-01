@@ -22,10 +22,6 @@ spec:
         - name: cassandra
           image: gcr.io/google-samples/cassandra:v13
           imagePullPolicy: IfNotPresent
-          #resources:
-          #  requests:
-          #    memory: "2Gi" # Defina a quantidade desejada de memória (por exemplo, 2 gigabytes)
-          #    cpu: "2000m" # Defina a quantidade desejada de CPU (por exemplo, 1 vCPU)
           ports:
             - containerPort: 7000
               name: intra-node
@@ -39,7 +35,7 @@ spec:
             - name: MAX_HEAP_SIZE
               value: 256M
             - name: CASSANDRA_SEEDS
-              value: "cassandra-0.cassandra.sfi2-uc1.svc.ccomv4, cassandra-1.cassandra.sfi2-uc1.svc.ccomv4"
+              value: "cassandra-0.cassandra.default.svc.cluster.local"
             - name: HEAP_NEWSIZE
               value: 100M
             - name: CASSANDRA_START_RPC
@@ -55,23 +51,9 @@ spec:
             - name: CASSANDRA_RACK
               value: "Rack1"
           volumeMounts:
-          - name: cassandra-data
-            mountPath: /cassandra_data
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/hostname
-                operator: NotIn
-                values:
-                - whx-rn
-  volumeClaimTemplates:
-  - metadata:
-      name: cassandra-data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: local-path
-      resources:
-        requests:
-          storage: 1Gi
+            - name: cassandra-storage
+              mountPath: /var/lib/cassandra/data
+      volumes:
+        - name: cassandra-storage
+          persistentVolumeClaim:
+                  claimName: cassandra-pvc
