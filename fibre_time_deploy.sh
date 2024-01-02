@@ -53,7 +53,9 @@ for ((i=1; i<=$num_execucoes; i++)); do
     sleep 10
 
     # Exclui os PersistentVolumeClaims associados ao StatefulSet
-    kubectl delete pvc cassandra-pvc --force
+    kubectl delete pvc cassandra-data-cassandra-0 --force
+    kubectl delete pvc cassandra-data-cassandra-1 --force
+    kubectl delete pvc cassandra-data-cassandra-2 --force
 
     # Espera mais alguns segundos antes de excluir os PersistentVolumes
     sleep 10
