@@ -1,0 +1,120 @@
+******************** Stress Settings ********************
+Command:
+  Type: read
+  Count: 10,000
+  No Warmup: true
+  Consistency Level: LOCAL_ONE
+  Target Uncertainty: not applicable
+  Key Size (bytes): 10
+  Counter Increment Distibution: add=fixed(1)
+Rate:
+  Auto: false
+  Thread Count: 10
+  OpsPer Sec: 0
+Population:
+  Distribution: Gaussian:  min=1,max=10000,mean=5000.500000,stdev=1666.500000
+  Order: ARBITRARY
+  Wrap: false
+Insert:
+  Revisits: Uniform:  min=1,max=1000000
+  Visits: Fixed:  key=1
+  Row Population Ratio: Ratio: divisor=1.000000;delegate=Fixed:  key=1
+  Batch Type: not batching
+Columns:
+  Max Columns Per Key: 5
+  Column Names: [C0, C1, C2, C3, C4]
+  Comparator: AsciiType
+  Timestamp: null
+  Variable Column Count: false
+  Slice: false
+  Size Distribution: Fixed:  key=34
+  Count Distribution: Fixed:  key=5
+Errors:
+  Ignore: false
+  Tries: 10
+Log:
+  No Summary: false
+  No Settings: false
+  File: 2_token_1024_replica_read.txt
+  Interval Millis: 1000
+  Level: NORMAL
+Mode:
+  API: JAVA_DRIVER_NATIVE
+  Connection Style: CQL_PREPARED
+  CQL Version: CQL3
+  Protocol Version: V3
+  Username: null
+  Password: null
+  Auth Provide Class: null
+  Max Pending Per Connection: 128
+  Connections Per Host: 8
+  Compression: NONE
+Node:
+  Nodes: [cassandra]
+  Is White List: false
+  Datacenter: null
+Schema:
+  Keyspace: keyspace1
+  Replication Strategy: org.apache.cassandra.locator.SimpleStrategy
+  Replication Strategy Options: {replication_factor=1024}
+  Table Compression: null
+  Table Compaction Strategy: null
+  Table Compaction Strategy Options: {}
+Transport:
+  truststore=null; truststore-password=null; keystore=null; keystore-password=null; ssl-protocol=TLS; ssl-alg=null; ssl-ciphers=TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA; 
+Port:
+  Native Port: 9042
+  JMX Port: 7199
+Graph:
+  File: null
+  Revision: unknown
+  Title: null
+  Operation: READ
+TokenRange:
+  Wrap: false
+  Split Factor: 1
+
+Sleeping 2s...
+Running READ with 10 threads for 10000 iteration
+type                                               total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+total,                                                   328,     328,     328,     328,    19.9,    16.1,    52.0,   105.6,   110.4,   110.4,    1.0,  0.00000,      0,      0,       0,       0,       0,       0
+total,                                                   868,     540,     540,     540,    18.3,    16.0,    51.6,    52.1,    57.1,    57.1,    2.0,  0.15323,      0,      0,       0,       0,       0,       0
+total,                                                  1373,     505,     505,     505,    19.9,    16.0,    51.6,    51.8,    51.9,    52.1,    3.0,  0.10371,      0,      0,       0,       0,       0,       0
+total,                                                  1972,     599,     599,     599,    16.7,     0.7,    51.5,    51.9,    54.9,    63.3,    4.0,  0.09442,      0,      0,       0,       0,       0,       0
+total,                                                  2478,     506,     506,     506,    19.7,    16.0,    51.5,    51.8,    52.1,    52.2,    5.0,  0.07540,      0,      0,       0,       0,       0,       0
+total,                                                  3022,     544,     544,     544,    18.3,     1.3,    51.5,    51.6,    51.7,    51.8,    6.0,  0.06322,      0,      0,       0,       0,       0,       0
+total,                                                  3581,     559,     559,     559,    17.9,     1.3,    51.5,    51.6,    52.6,    59.9,    7.0,  0.05518,      0,      0,       0,       0,       0,       0
+total,                                                  4093,     512,     512,     512,    19.7,    15.9,    51.5,    51.6,    53.1,    53.4,    8.0,  0.04834,      0,      0,       0,       0,       0,       0
+total,                                                  4658,     565,     565,     565,    17.6,     0.6,    51.5,    51.6,    51.8,    52.1,    9.0,  0.04363,      0,      0,       0,       0,       0,       0
+total,                                                  5195,     537,     537,     537,    18.6,     0.9,    51.5,    51.8,    52.0,    52.1,   10.0,  0.03925,      0,      0,       0,       0,       0,       0
+total,                                                  5746,     551,     551,     551,    18.2,     0.8,    51.4,    51.6,    52.6,    52.7,   11.0,  0.03581,      0,      0,       0,       0,       0,       0
+total,                                                  6318,     572,     572,     572,    17.4,     0.5,    51.4,    51.5,    51.6,    53.7,   12.0,  0.03335,      0,      0,       0,       0,       0,       0
+total,                                                  6893,     575,     575,     575,    17.4,     0.6,    51.4,    51.5,    51.8,    56.3,   13.0,  0.03129,      0,      0,       0,       0,       0,       0
+total,                                                  7471,     578,     578,     578,    17.2,     0.5,    51.4,    51.5,    51.7,    52.3,   14.0,  0.02944,      0,      0,       0,       0,       0,       0
+total,                                                  8036,     565,     565,     565,    17.7,     0.5,    51.4,    51.5,    51.6,    52.9,   15.0,  0.02760,      0,      0,       0,       0,       0,       0
+total,                                                  8594,     558,     558,     558,    18.0,     0.6,    51.4,    51.4,    51.5,    51.5,   16.0,  0.02591,      0,      0,       0,       0,       0,       0
+total,                                                  9134,     540,     540,     540,    18.5,     0.6,    51.4,    51.5,    51.6,    52.5,   17.0,  0.02438,      0,      0,       0,       0,       0,       0
+total,                                                  9695,     561,     561,     561,    17.8,    15.9,    51.4,    51.5,    51.5,    51.5,   18.0,  0.02307,      0,      0,       0,       0,       0,       0
+total,                                                 10000,     518,     518,     518,    18.8,    15.9,    51.4,    51.5,    51.6,    51.6,   18.6,  0.02187,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :      538 op/s  [READ: 538 op/s]
+Partition rate            :      538 pk/s  [READ: 538 pk/s]
+Row rate                  :      538 row/s [READ: 538 row/s]
+Latency mean              :   18.2 ms [READ: 18.2 ms]
+Latency median            :    1.6 ms [READ: 1.6 ms]
+Latency 95th percentile   :   51.5 ms [READ: 51.5 ms]
+Latency 99th percentile   :   51.8 ms [READ: 51.8 ms]
+Latency 99.9th percentile :   57.1 ms [READ: 57.1 ms]
+Latency max               :  110.4 ms [READ: 110.4 ms]
+Total partitions          :     10,000 [READ: 10,000]
+Total errors              :          0 [READ: 0]
+Total GC count            : 0
+Total GC memory           : 0.000 KiB
+Total GC time             :    0.0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0.0 ms
+Total operation time      : 00:00:18
+
+END
