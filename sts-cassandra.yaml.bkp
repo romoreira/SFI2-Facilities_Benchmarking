@@ -53,6 +53,10 @@ spec:
           volumeMounts:
             - name: cassandra-storage
               mountPath: /var/lib/cassandra/data
+          resources:
+            requests:
+              memory: "2Gi" # Defina a quantidade desejada de memória (por exemplo, 2 gigabytes)
+              cpu: "2000m" # Defina a quantidade desejada de CPU (por exemplo, 1 vCPU)
       volumes:
         - name: cassandra-storage
           persistentVolumeClaim:
