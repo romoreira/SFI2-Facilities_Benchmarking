@@ -3,7 +3,7 @@
 #!/bin/bash
 
 # Nome do arquivo CSV para armazenar os tempos
-csv_file="fabric_deployment.csv"
+csv_file="results/fabric_deployment.csv"
 
 # Cabeçalhos do arquivo CSV
 echo "#experiment, deployment_time" > "$csv_file"
@@ -15,12 +15,17 @@ num_execucoes=10
 for ((i=1; i<=$num_execucoes; i++)); do
 
     # Armazena o tempo de início
-    start_time=$(date +%s)
+    #start_time=$(date +%s)
 
     # Aplica o arquivo YAML do StatefulSet
+    kubectl apply -f svc-cassandra.yaml
     kubectl apply -f pv-cassandra.yaml
     kubectl apply -f pvc-cassandra.yaml
-    kubectl apply -f sts-cassandra.yaml
+
+    # Armazena o tempo de início
+    start_time=$(date +%s)
+
+    kubectl apply -f sts-cassandra.yaml.bkp
 
     # Define o número total de nós no cluster
     n_total_nos=3
@@ -56,6 +61,9 @@ for ((i=1; i<=$num_execucoes; i++)); do
     kubectl delete pvc cassandra-pvc --force
 
     # Espera mais alguns segundos antes de excluir os PersistentVolumes
+    sleep 10
+
+    kubectl delete svc cassandra --force
     sleep 10
 
     # Exclui os PersistentVolumes associados aos PVCs

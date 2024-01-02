@@ -1,15 +1,13 @@
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: PersistentVolume
 metadata:
-  name: cassandra-pv
+  name: cassandra-pvc
+  labels:
+    app: cassandra
 spec:
-  capacity:
-    storage: 10Gi
-  volumeMode: Filesystem
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: standard
-  hostPath:
-    path: /home/ubuntu/cassandra-data
-
+  resources:
+    requests:
+      storage: 1Gi
