@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 # Nome do arquivo CSV para armazenar os tempos
 csv_file="results/fabric_deployment.csv"
 

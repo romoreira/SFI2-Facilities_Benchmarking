@@ -22,10 +22,10 @@ spec:
         - name: cassandra
           image: gcr.io/google-samples/cassandra:v13
           imagePullPolicy: IfNotPresent
-          #resources:
-          #  requests:
-          #    memory: "2Gi" # Defina a quantidade desejada de memória (por exemplo, 2 gigabytes)
-          #    cpu: "2000m" # Defina a quantidade desejada de CPU (por exemplo, 1 vCPU)
+          resources:
+            requests:
+              memory: "2Gi" # Defina a quantidade desejada de memória (por exemplo, 2 gigabytes)
+              cpu: "2000m" # Defina a quantidade desejada de CPU (por exemplo, 1 vCPU)
           ports:
             - containerPort: 7000
               name: intra-node
