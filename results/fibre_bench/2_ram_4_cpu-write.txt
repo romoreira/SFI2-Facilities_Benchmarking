@@ -1,0 +1,125 @@
+******************** Stress Settings ********************
+Command:
+  Type: write
+  Count: 50,000
+  No Warmup: true
+  Consistency Level: QUORUM
+  Target Uncertainty: not applicable
+  Key Size (bytes): 10
+  Counter Increment Distibution: add=fixed(1)
+Rate:
+  Auto: false
+  Thread Count: 200
+  OpsPer Sec: 0
+Population:
+  Sequence: 1..50000
+  Order: ARBITRARY
+  Wrap: true
+Insert:
+  Revisits: Uniform:  min=1,max=1000000
+  Visits: Fixed:  key=1
+  Row Population Ratio: Ratio: divisor=1.000000;delegate=Fixed:  key=1
+  Batch Type: not batching
+Columns:
+  Max Columns Per Key: 5
+  Column Names: [C0, C1, C2, C3, C4]
+  Comparator: AsciiType
+  Timestamp: null
+  Variable Column Count: false
+  Slice: false
+  Size Distribution: Fixed:  key=34
+  Count Distribution: Fixed:  key=5
+Errors:
+  Ignore: false
+  Tries: 10
+Log:
+  No Summary: false
+  No Settings: false
+  File: 2_ram_4_cpu-write.txt
+  Interval Millis: 1000
+  Level: NORMAL
+Mode:
+  API: JAVA_DRIVER_NATIVE
+  Connection Style: CQL_PREPARED
+  CQL Version: CQL3
+  Protocol Version: V3
+  Username: null
+  Password: null
+  Auth Provide Class: null
+  Max Pending Per Connection: 128
+  Connections Per Host: 8
+  Compression: NONE
+Node:
+  Nodes: [cassandra]
+  Is White List: false
+  Datacenter: null
+Schema:
+  Keyspace: keyspace1
+  Replication Strategy: org.apache.cassandra.locator.SimpleStrategy
+  Replication Strategy Options: {replication_factor=2}
+  Table Compression: null
+  Table Compaction Strategy: null
+  Table Compaction Strategy Options: {}
+Transport:
+  truststore=null; truststore-password=null; keystore=null; keystore-password=null; ssl-protocol=TLS; ssl-alg=null; ssl-ciphers=TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA; 
+Port:
+  Native Port: 9042
+  JMX Port: 7199
+Graph:
+  File: null
+  Revision: unknown
+  Title: null
+  Operation: WRITE
+TokenRange:
+  Wrap: false
+  Split Factor: 1
+
+Sleeping 2s...
+Running WRITE with 200 threads for 50000 iteration
+type                                               total ops,    op/s,    pk/s,   row/s,    mean,     med,     .95,     .99,    .999,     max,   time,   stderr, errors,  gc: #,  max ms,  sum ms,  sdv ms,      mb
+total,                                                   891,     891,     891,     891,   131.4,   119.8,   223.6,   285.5,   288.6,   288.6,    1.0,  0.00000,      0,      0,       0,       0,       0,       0
+total,                                                  3005,    2114,    2114,    2114,    94.7,    77.5,   142.0,   161.2,   176.9,   177.9,    2.0,  0.24388,      0,      0,       0,       0,       0,       0
+total,                                                  5150,    2145,    2145,    2145,    92.7,    75.5,   139.7,   150.1,   156.6,   157.7,    3.0,  0.16747,      0,      0,       0,       0,       0,       0
+total,                                                  7246,    2096,    2096,    2096,    94.3,    75.1,   139.9,   164.0,   183.4,   187.6,    4.0,  0.12712,      0,      0,       0,       0,       0,       0
+total,                                                  9441,    2195,    2195,    2195,    92.5,    74.8,   140.4,   150.6,   158.6,   159.0,    5.0,  0.10255,      0,      0,       0,       0,       0,       0
+total,                                                 11587,    2146,    2146,    2146,    93.0,    75.2,   139.7,   156.6,   168.2,   174.5,    6.0,  0.08575,      0,      0,       0,       0,       0,       0
+total,                                                 13712,    2125,    2125,    2125,    94.3,    75.6,   141.6,   152.6,   176.8,   180.7,    7.0,  0.07362,      0,      0,       0,       0,       0,       0
+total,                                                 15872,    2160,    2160,    2160,    92.5,    74.6,   138.8,   146.5,   153.4,   154.7,    8.0,  0.06435,      0,      0,       0,       0,       0,       0
+total,                                                 18029,    2157,    2157,    2157,    92.7,    74.8,   138.8,   145.9,   157.4,   158.6,    9.0,  0.05718,      0,      0,       0,       0,       0,       0
+total,                                                 20195,    2166,    2166,    2166,    92.3,    74.8,   138.5,   145.1,   154.1,   154.3,   10.0,  0.05144,      0,      0,       0,       0,       0,       0
+total,                                                 22354,    2159,    2159,    2159,    93.1,    74.8,   139.6,   152.0,   160.3,   167.8,   11.0,  0.04680,      0,      0,       0,       0,       0,       0
+total,                                                 24505,    2151,    2151,    2151,    91.9,    74.5,   138.3,   146.3,   152.6,   157.7,   12.0,  0.04288,      0,      0,       0,       0,       0,       0
+total,                                                 26680,    2175,    2175,    2175,    91.9,    74.7,   138.3,   145.9,   151.4,   156.8,   13.0,  0.03958,      0,      0,       0,       0,       0,       0
+total,                                                 28786,    2106,    2106,    2106,    95.9,    75.8,   142.3,   166.5,   201.1,   202.8,   14.0,  0.03687,      0,      0,       0,       0,       0,       0
+total,                                                 30928,    2142,    2142,    2142,    92.6,    75.5,   140.9,   151.5,   159.9,   164.1,   15.0,  0.03440,      0,      0,       0,       0,       0,       0
+total,                                                 33092,    2164,    2164,    2164,    92.6,    75.1,   138.7,   145.1,   150.9,   152.7,   16.0,  0.03224,      0,      0,       0,       0,       0,       0
+total,                                                 35246,    2154,    2154,    2154,    92.1,    74.3,   141.4,   152.2,   168.6,   169.0,   17.0,  0.03035,      0,      0,       0,       0,       0,       0
+total,                                                 37445,    2199,    2199,    2199,    91.9,    74.4,   138.4,   143.8,   148.0,   150.2,   18.0,  0.02867,      0,      0,       0,       0,       0,       0
+total,                                                 39634,    2189,    2189,    2189,    91.2,    74.4,   137.9,   145.4,   149.9,   151.1,   19.0,  0.02716,      0,      0,       0,       0,       0,       0
+total,                                                 41778,    2144,    2144,    2144,    92.7,    74.5,   138.9,   146.0,   154.3,   160.2,   20.0,  0.02580,      0,      0,       0,       0,       0,       0
+total,                                                 43988,    2210,    2210,    2210,    90.2,    73.7,   137.6,   144.6,   151.0,   154.5,   21.0,  0.02459,      0,      0,       0,       0,       0,       0
+total,                                                 46145,    2157,    2157,    2157,    93.3,    74.9,   140.5,   148.9,   158.9,   159.0,   22.0,  0.02347,      0,      0,       0,       0,       0,       0
+total,                                                 48311,    2166,    2166,    2166,    92.3,    74.1,   138.0,   147.6,   159.8,   161.3,   23.0,  0.02245,      0,      0,       0,       0,       0,       0
+total,                                                 50000,    2021,    2021,    2021,    94.3,    75.4,   142.0,   171.6,   193.9,   195.3,   23.8,  0.02156,      0,      0,       0,       0,       0,       0
+
+
+Results:
+Op rate                   :    2,098 op/s  [WRITE: 2,098 op/s]
+Partition rate            :    2,098 pk/s  [WRITE: 2,098 pk/s]
+Row rate                  :    2,098 row/s [WRITE: 2,098 row/s]
+Latency mean              :   93.5 ms [WRITE: 93.5 ms]
+Latency median            :   75.1 ms [WRITE: 75.1 ms]
+Latency 95th percentile   :  140.2 ms [WRITE: 140.2 ms]
+Latency 99th percentile   :  156.4 ms [WRITE: 156.4 ms]
+Latency 99.9th percentile :  220.9 ms [WRITE: 220.9 ms]
+Latency max               :  288.6 ms [WRITE: 288.6 ms]
+Total partitions          :     50,000 [WRITE: 50,000]
+Total errors              :          0 [WRITE: 0]
+Total GC count            : 0
+Total GC memory           : 0.000 KiB
+Total GC time             :    0.0 seconds
+Avg GC time               :    NaN ms
+StdDev GC time            :    0.0 ms
+Total operation time      : 00:00:23
+
+END
